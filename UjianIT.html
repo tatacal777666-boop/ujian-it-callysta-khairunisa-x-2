@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn - Belajar Teknologi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
+            color: #242424;
+        }
+
+        /* NAVBAR */
+        header {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #087cf0;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu {
+            display: none;
+            font-size: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: gray;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #087cf0;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0566c7;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 0;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        /* ARTIKEL PILIHAN */
+        .featured {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .featured img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .content span,
+        .card span {
+            color: #2580bd;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .content h3 {
+            margin: 12px 0;
+            font-size: 23px;
+        }
+
+        .content p {
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+        /* ARTIKEL TERBARU */
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 18px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            color: #2580bd;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* KATEGORI */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .categories button:hover,
+        .categories button.active {
+            background: #087cf0;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #202020;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                z-index: 10;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .articles {
+                grid-template-columns: 1fr;
+            }
+
+            .featured img {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">TechLearn</div>
+
+        <nav id="navbar">
+            <a href="#home">Beranda</a>
+            <a href="#pilihan">Artikel Pilihan</a>
+            <a href="#terbaru">Artikel Terbaru</a>
+            <a href="#kategori">Kategori</a>
+        </nav>
+
+        <button class="menu" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <h1>Belajar Teknologi Lebih Mudah</h1>
+
+        <p>
+            Temukan artikel dan tutorial tentang AI,
+            programming, web development, dan teknologi.
+        </p>
+
+        <a href="#pilihan" class="btn">Mulai Membaca</a>
+    </section>
+
+    <!-- ARTIKEL PILIHAN -->
+    <section class="container" id="pilihan">
+
+        <h2>Artikel Pilihan</h2>
+
+        <div class="featured">
+
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200" alt="Teknologi">
+
+            <div class="content">
+
+                <span>ARTIFICIAL INTELLIGENCE</span>
+
+                <h3>
+                    Memahami Machine Learning untuk Pemula
+                </h3>
+
+                <p>
+                    Pelajari konsep dasar machine learning
+                    dan bagaimana komputer dapat belajar dari data.
+                </p>
+
+                <a href="#terbaru" class="btn">Baca Artikel</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTIKEL TERBARU -->
+    <section class="container" id="terbaru">
+
+        <h2>Artikel Terbaru</h2>
+
+        <div class="articles">
+
+            <!-- ARTIKEL PYTHON -->
+            <div class="card" data-category="Programming">
+
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" alt="Python">
+
+                <div class="card-content">
+
+                    <span>PROGRAMMING</span>
+
+                    <h3>Belajar Python dari Dasar</h3>
+
+                    <p>
+                        Panduan sederhana untuk memahami
+                        dasar-dasar Python.
+                    </p>
+
+                    <a href="#pilihan">Baca Selengkapnya →</a>
+
+                </div>
+            </div>
+
+            <!-- ARTIKEL HTML CSS -->
+            <div class="card" data-category="Web Development">
+
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="HTML CSS">
+
+                <div class="card-content">
+
+                    <span>WEB DEVELOPMENT</span>
+
+                    <h3>Mengenal HTML dan CSS</h3>
+
+                    <p>
+                        Memahami bagaimana HTML dan CSS
+                        digunakan untuk membuat website.
+                    </p>
+
+                    <a href="#pilihan">Baca Selengkapnya →</a>
+
+                </div>
+            </div>
+
+            <!-- ARTIKEL NEURAL NETWORK -->
+            <div class="card" data-category="Deep Learning">
+
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="Neural Network">
+
+                <div class="card-content">
+
+                    <span>DEEP LEARNING</span>
+
+                    <h3>Apa Itu Neural Network?</h3>
+
+                    <p>
+                        Mengenal konsep neural network
+                        dengan penjelasan yang sederhana.
+                    </p>
+
+                    <a href="#pilihan">Baca Selengkapnya →</a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <section class="container" id="kategori">
+
+        <h2>Kategori</h2>
+
+        <div class="categories">
+
+            <button class="active" onclick="filterArtikel('Semua', this)">
+                Semua
+            </button>
+
+            <button onclick="filterArtikel('AI', this)">
+                AI
+            </button>
+
+            <button onclick="filterArtikel('Machine Learning', this)">
+                Machine Learning
+            </button>
+
+            <button onclick="filterArtikel('Deep Learning', this)">
+                Deep Learning
+            </button>
+
+            <button onclick="filterArtikel('Programming', this)">
+                Programming
+            </button>
+
+            <button onclick="filterArtikel('Web Development', this)">
+                Web Development
+            </button>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>TechLearn</h3>
+
+        <p>Belajar teknologi dengan cara yang sederhana.</p>
+
+        <p>© 2026 TechLearn</p>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // MENU HAMBURGER
+        function toggleMenu() {
+            const navbar = document.getElementById("navbar");
+            navbar.classList.toggle("active");
+        }
+
+        // FILTER KATEGORI
+        function filterArtikel(kategori, tombol) {
+
+            const cards = document.querySelectorAll(".card");
+
+            const buttons = document.querySelectorAll(
+                ".categories button"
+            );
+
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            tombol.classList.add("active");
+
+            cards.forEach(card => {
+
+                const jenis = card.dataset.category;
+
+                if (kategori === "Semua") {
+                    card.style.display = "block";
+                }
+
+                else if (
+                    kategori === "AI" &&
+                    ["Deep Learning", "Machine Learning"].includes(jenis)
+                ) {
+                    card.style.display = "block";
+                }
+
+                else if (kategori === jenis) {
+                    card.style.display = "block";
+                }
+
+                else {
+                    card.style.display = "none";
+                }
+
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
